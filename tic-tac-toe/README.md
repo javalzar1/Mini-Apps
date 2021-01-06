@@ -3,6 +3,8 @@ Single page app started from blank **index.html** and blank **app.js**
 
 ## Requirements
 - [ ] The first move always starts with player X
+  - User is player X
+  - Player Y (*computer*) automatically goes next
 - [ ] The app detects a win or tie and displays an appropriate message
 - [ ] A button resets the game for a new round of gameplay
 

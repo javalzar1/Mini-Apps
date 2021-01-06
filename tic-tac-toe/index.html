@@ -1,18 +1,19 @@
 <!DOCTYPE hmtl>
 <html>
+  <style>
+   /* add pontential styling here */
+   #myCanvas{
+    border:1px solid #d3d3d3;
+   }
+  </style>
   <head>
     <title>Tic Tac Toe</title>
   </head>
-  <body>
-    <h2>This is my tic tac toe app</h2>
-    <form>
-      <label>Is this page linked to app.js?</label>
-      <input type="button" value="Click meh" onClick="display()">
-    </form>
+  <body onload="renderPlayground()">
+    <h1>Tic Tac Toe</h1>
+    <canvas id="myCanvas" width="300" height="300">
+      Your browser does not support the HTML5 canvas tag.</canvas>
 
     <script type="text/javascript" src="./app.js"></script>
   </body>
-</html>
-
-
-
+  </html>
