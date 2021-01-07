@@ -136,9 +136,14 @@ function mouseUp(e) {
 
 }
 
+
+// global win state to be checked or updated
+// with every click on board
+let won = false;
+
 function scoreChecker(){
   let keys = Object.keys(board);
-  let won = false;
+
   // check columns
   let columnsMarked = 0;
   let column = 1;
@@ -150,6 +155,8 @@ function scoreChecker(){
   // check diagnals
 
 
+  // if won reset board and moves
+  won ? winReset(keys) : null;
 }
 
 
@@ -160,9 +167,22 @@ function columnChecker(spaceNum, marked) {
   if (board[`s${spaceNum}`] === 'x') {
     marked++;
     if (marked === 3) {
-      alert('You\'ve Won!');
       won = true;
     }
     columnChecker(spaceNum + 3, marked)
   }
+}
+
+function winReset(keys) {
+  alert('You\'ve Won!');
+  // reset board
+  for(let i of keys) {
+    board[i] = ""
+  }
+  // reset canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // re-render board
+  renderBoard();
+  // reset win state
+  won = false;
 }
