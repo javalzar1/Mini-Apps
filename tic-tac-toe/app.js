@@ -149,6 +149,7 @@ function scoreChecker(){
   // check rows
   // check diagnals
 
+
 }
 
 
