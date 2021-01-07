@@ -132,7 +132,11 @@ function mouseUp(e) {
     }
   }
   // Check score after every click
-  scoreChecker()
+  // if won wait a so last x actually renders
+  // before won alert and reset
+  setTimeout(() => {
+    scoreChecker();
+  }, 100)
 
 }
 
@@ -144,14 +148,21 @@ let won = false;
 function scoreChecker(){
   let keys = Object.keys(board);
 
+  let marked = 0;
+
   // check columns
-  let columnsMarked = 0;
-  let column = 1;
-  while (column < 4) {
-    columnChecker(column, columnsMarked)
-    column++;
+  let start = 1;
+  while (start < 4) {
+    columnChecker(start, marked)
+    start++;
   }
+  start = 1;
   // check rows
+  while (start < 10) {
+    rowChecker(start, marked)
+    start += 3;
+  }
+  start = 1;
   // check diagnals
 
 
@@ -160,18 +171,29 @@ function scoreChecker(){
 }
 
 
-// scoreChecker helper functions
+/*** scoreChecker helper functions ***/
 function columnChecker(spaceNum, marked) {
-  if (spaceNum > 9) { return; }
-
   if (board[`s${spaceNum}`] === 'x') {
     marked++;
     if (marked === 3) {
       won = true;
+      return;
     }
     columnChecker(spaceNum + 3, marked)
   }
 }
+
+function rowChecker(spaceNum, marked) {
+  if (board[`s${spaceNum}`] === 'x') {
+    marked++;
+    if (marked === 3) {
+      won = true;
+      return;
+    }
+    rowChecker(spaceNum + 1, marked)
+  }
+}
+
 
 function winReset(keys) {
   alert('You\'ve Won!');
