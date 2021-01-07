@@ -2,13 +2,28 @@ let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext("2d");
 ctx.lineWidth = 2;
 
+// draws board -> # when page loads
+function renderBoard() {
+  ctx.beginPath();
+  ctx.moveTo(100, 0);
+  ctx.lineTo(100, 300);
+  ctx.moveTo(200, 0);
+  ctx.lineTo(200, 300);
+  ctx.moveTo(0, 100);
+  ctx.lineTo(300, 100);
+  ctx.moveTo(0, 200);
+  ctx.lineTo(300, 200);
+  ctx.stroke();
+}
+
 let board = {
   s1: "", s2: "", s3: "",
   s4: "", s5: "", s6: "",
   s7: "", s8: "", s9: ""
 }
 
-// listens for click and drax x at given coordinates
+// listens for click and calls mouseUp() which
+// will determine the coordinates of x on screen
 canvas.addEventListener("mouseup", mouseUp, false);
 
 function drawX(x, y) {
@@ -24,6 +39,8 @@ function drawX(x, y) {
   ctx.stroke();
 }
 
+// takes mouse clicks coordinates and determines
+// coordinates for x based on region clicked
 function mouseUp(e) {
   // mouse coordinates
   let mouseX, mouseY;
@@ -114,19 +131,37 @@ function mouseUp(e) {
       console.log(board)
     }
   }
+  // Check score after every click
+  scoreChecker()
+
+}
+
+function scoreChecker(){
+  let keys = Object.keys(board);
+  let won = false;
+  // check columns
+  let columnsMarked = 0;
+  let column = 1;
+  while (column < 4) {
+    columnChecker(column, columnsMarked)
+    column++;
+  }
+  // check rows
+  // check diagnals
 
 }
 
 
-function renderBoard() {
-  ctx.beginPath();
-  ctx.moveTo(100, 0);
-  ctx.lineTo(100, 300);
-  ctx.moveTo(200, 0);
-  ctx.lineTo(200, 300);
-  ctx.moveTo(0, 100);
-  ctx.lineTo(300, 100);
-  ctx.moveTo(0, 200);
-  ctx.lineTo(300, 200);
-  ctx.stroke();
+// scoreChecker helper functions
+function columnChecker(spaceNum, marked) {
+  if (spaceNum > 9) { return; }
+
+  if (board[`s${spaceNum}`] === 'x') {
+    marked++;
+    if (marked === 3) {
+      alert('You\'ve Won!');
+      won = true;
+    }
+    columnChecker(spaceNum + 3, marked)
+  }
 }
