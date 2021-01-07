@@ -1,20 +1,19 @@
-function renderPlayground() {
-  var c = document.getElementById("myCanvas");
-  var ctx = c.getContext("2d");
+function test() {
+  alert('tst')
+}
 
+renderBoard = () => {
+  var c = document.getElementById("canvas");
+  var ctx = c.getContext("2d");
   ctx.beginPath();
-  // first row
-  ctx.rect(0, 0, 100, 100);
-  ctx.rect(100, 0, 100, 100);
-  ctx.rect(200, 0, 100, 100);
-  // second row
-  ctx.rect(0, 100, 100, 100);
-  ctx.rect(100, 100, 100, 100);
-  ctx.rect(200, 100, 100, 100);
-  // third row
-  ctx.rect(0, 200, 100, 100);
-  ctx.rect(100, 200, 100, 100);
-  ctx.rect(200, 200, 100, 100);
+  ctx.moveTo(100, 0);
+  ctx.lineTo(100, 300);
+  ctx.moveTo(200, 0);
+  ctx.lineTo(200, 300);
+  ctx.moveTo(0, 100);
+  ctx.lineTo(300, 100);
+  ctx.moveTo(0, 200);
+  ctx.lineTo(300, 200);
 
   ctx.stroke();
 }

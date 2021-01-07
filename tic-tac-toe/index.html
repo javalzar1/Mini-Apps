@@ -1,19 +1,109 @@
 <!DOCTYPE hmtl>
 <html>
-  <style>
-   /* add pontential styling here */
-   #myCanvas{
-    border:1px solid #d3d3d3;
-   }
-  </style>
   <head>
     <title>Tic Tac Toe</title>
+    <!-- using style elements to position clickable
+    rectangles over the canvas -->
+    <style>
+      #board {
+        position: relative;
+      }
+      /* first row */
+      #s1 {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: 1;
+      }
+      #s2 {
+        position: absolute;
+        left: 101px;
+        top: 0px;
+        z-index: 1;
+      }
+      #s3 {
+        position: absolute;
+        left: 201px;
+        top: 0px;
+        z-index: 1;
+      }
+      /* sencond row */
+      #s4 {
+        position: absolute;
+        left: 0px;
+        top: 101px;
+        z-index: 1;
+      }
+      #s5 {
+        position: absolute;
+        left: 101px;
+        top: 101px;
+        z-index: 1;
+      }
+      #s6 {
+        position: absolute;
+        left: 201px;
+        top: 101px;
+        z-index: 1;
+      }
+      /* third row */
+      #s7 {
+        position: absolute;
+        left: 0px;
+        top: 201px;
+        z-index: 1;
+      }
+      #s8 {
+        position: absolute;
+        left: 101px;
+        top: 201px;
+        z-index: 1;
+      }
+      #s9 {
+        position: absolute;
+        left: 201px;
+        top: 201px;
+        z-index: 1;
+      }
+    </style>
   </head>
-  <body onload="renderPlayground()">
+  <body onLoad="renderBoard()">
     <h1>Tic Tac Toe</h1>
-    <canvas id="myCanvas" width="300" height="300">
-      Your browser does not support the HTML5 canvas tag.</canvas>
-
+    <!-- Tic Tac Toe View -->
+    <div id="board">
+      <canvas id="canvas" width="300" height="300" ></canvas>
+      <!-- clickable boxes ontop of canvas -->
+      <!-- first row -->
+      <svg id="s1" width="95" height="95">
+        <rect width="95" height="95" style="fill:rgb(255, 255, 255);" onClick="test()"/>
+      </svg>
+      <svg id="s2" width="95" height="95">
+        <rect width="95" height="95" style="fill:rgb(255, 255, 255);" onClick="test()"/>
+      </svg>
+      <svg id="s3" width="95" height="95">
+        <rect width="95" height="95" style="fill:rgb(255, 255, 255);" onClick="test()"/>
+      </svg>
+       <!-- second row -->
+       <svg id="s4" width="95" height="95">
+        <rect width="95" height="95" style="fill:rgb(255, 255, 255);" onClick="test()"/>
+      </svg>
+      <svg id="s5" width="95" height="95">
+        <rect width="95" height="95" style="fill:rgb(255, 255, 255);" onClick="test()"/>
+      </svg>
+      <svg id="s6" width="95" height="95">
+        <rect width="95" height="95" style="fill:rgb(255, 255, 255);" onClick="test()"/>
+      </svg>
+      <!-- third row -->
+      <svg id="s7" width="95" height="95">
+        <rect width="95" height="95" style="fill:rgb(255, 255, 255);" onClick="test()"/>
+      </svg>
+      <svg id="s8" width="95" height="95">
+        <rect width="95" height="95" style="fill:rgb(255, 255, 255);" onClick="test()"/>
+      </svg>
+      <svg id="s9" width="95" height="95">
+        <rect width="95" height="95" style="fill:rgb(255, 255, 255);" onClick="test()"/>
+      </svg>
+    </div>
     <script type="text/javascript" src="./app.js"></script>
   </body>
-  </html>
+</html>
